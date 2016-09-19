@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Start Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <h1>Test GeoTIFF WAR!</h1>
+    <p>
+      This test application provides a simple REST pixel query service against the GeoTIFF
+      <a href="http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/cdem_mnec/023/cdem_dem_023L_tif.zip">cdem_dem_023L_tif</a>
+      elevation raster, which must be expanded into the /tmp directory.
+    </p>
+
+    <h2>Sample data gdalinfo</h2>
+    <pre style="font-size: smaller;">
+Driver: GTiff/GeoTIFF
+Files: /tmp/cdem_dem_023L.tif
+Size is 9601, 4801
+Coordinate System is:
+GEOGCS["NAD83(CSRS)",
+    DATUM["NAD83_Canadian_Spatial_Reference_System",
+        SPHEROID["GRS 1980",6378137,298.2572221010002,
+            AUTHORITY["EPSG","7019"]],
+        TOWGS84[0,0,0,0,0,0,0],
+        AUTHORITY["EPSG","6140"]],
+    PRIMEM["Greenwich",0],
+    UNIT["degree",0.0174532925199433],
+    AUTHORITY["EPSG","4617"]]
+Origin = (-72.000104166666674,55.000104166666667)
+Pixel Size = (0.000208333333333,-0.000208333333333)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  ( -72.0001042,  55.0001042) ( 72d 0' 0.38"W, 55d 0' 0.38"N)
+Lower Left  ( -72.0001042,  53.9998958) ( 72d 0' 0.38"W, 53d59'59.63"N)
+Upper Right ( -69.9998958,  55.0001042) ( 69d59'59.63"W, 55d 0' 0.38"N)
+Lower Right ( -69.9998958,  53.9998958) ( 69d59'59.63"W, 53d59'59.63"N)
+Center      ( -71.0000000,  54.5000000) ( 71d 0' 0.00"W, 54d30' 0.00"N)
+Band 1 Block=9601x1 Type=Int16, ColorInterp=Gray
+    </pre>
+
+    <h2>Query URI template</h2>
+    <p>
+      http://localhost:8080/TestGeoTIFFWAR/rest/pixel/query/{latitude}/{longitude}
+    </p>
+    <ul>
+      <li>
+        <em>latitude</em> between 54, 55
+      </li>
+      <li>
+        <em>longitude</em> between -70, -72
+      </li>
+    </ul>
+  </body>
+</html>
